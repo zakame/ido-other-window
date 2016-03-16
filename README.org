@@ -1,6 +1,5 @@
 #+TITLE: ido-other-window
 #+AUTHOR: Zak B. Elep <zakame@zakame.net>
-#+STARTUP: fninline
 
 * About
 
@@ -20,4 +19,32 @@ load it after enabling =ido-mode=, e.g.
 #+BEGIN_SRC emacs-lisp
 (ido-mode +1)
 (require 'ido-other-window)
+#+END_SRC
+
+Then, from an ido file or buffer selection, you can now do:
+
+| =C-o= | open file/buffer in other window sensibly       |
+| =C-2= | open file/buffer in a vertically-split window   |
+| =C-3= | open file/buffer in a horizontally-split window |
+| =C-4= | open file/buffer in other window (same as C-o)  |
+| =C-5= | open file/buffer in a new frame                 |
+
+=C-o= will try to use =split-window-preferred-function= if that is
+defined, before falling back with =split-window-sensibly=.
+
+* Tips and Tricks
+
+One can define =split-window-preferred-function= to prefer side-by-side
+window splitting, which may be useful on widescreen displays:
+
+#+BEGIN_SRC emacs-lisp
+;; cribbed from https://github.com/zakame/.emacs.d/commit/b550b7
+(setq split-window-preferred-function
+      '(lambda (window)
+         "Split WINDOW, preferably side by side."
+         (let ((split-height-threshold
+                (and (< (window-width window)
+                      split-width-threshold)
+                   split-height-threshold)))
+           (split-window-sensibly window))))
 #+END_SRC
