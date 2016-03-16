@@ -85,11 +85,11 @@ If `split-window-preferred-function' is set, try to use that first."
         (other-window 1)))
      ((equal ido-exit-minibuffer-target-window 'horizontal)
       (split-window-horizontally-and-switch))
-
      ((equal ido-exit-minibuffer-target-window 'vertical)
       (split-window-vertically-and-switch))
      ((equal ido-exit-minibuffer-target-window 'frame)
-      (make-frame)))
+      (make-frame)
+      (other-frame 1)))
     ;; why? Some ido commands, such as textmate.el's
     ;; textmate-goto-symbol don't switch the current buffer
     (switch-to-buffer this-buffer)
