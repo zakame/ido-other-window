@@ -1,0 +1,30 @@
+#+TITLE: ido-other-window
+#+AUTHOR: Zak B. Elep <zakame@zakame.net>
+
+* About
+
+This little extension to ido[fn:1] makes window commands such as
+=ido-find-file-other-window=, =ido-switch-buffer-other-window=, and
+others, obsolete.  It follows behavior similar to Helm[fn:2] window
+actions upon selection.
+
+This extension is adapted from the original Gist[fn:3] by Tim Harper to
+be shippable through MELPA.
+
+* Usage
+
+Just put =ido-other-window.el= somewhere in your Emacs =load-path=, then
+load it after enabling =ido-mode=, e.g.
+
+#+BEGIN_SRC emacs-lisp
+(ido-mode +1)
+(require 'ido-other-window)
+#+END_SRC
+
+* Footnotes
+
+[fn:3] https://gist.github.com/timcharper/493269
+
+[fn:2] https://github.com/emacs-helm/helm
+
+[fn:1] https://www.emacswiki.org/emacs/InteractivelyDoThings
