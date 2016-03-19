@@ -46,35 +46,35 @@ If `split-window-preferred-function' is set, try to use that first."
   (other-window 1))
 
 (defvar ido-exit-minibuffer-target-window nil
-  "Target window to jump to after `ido' does its thing.")
+  "Target window to jump to after Ido does its thing.")
 
 (defun ido-invoke-in-other-window ()
-  "Signal ido to switch to (or create) another window after exiting."
+  "Signal Ido to switch to (or create) another window after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'other)
   (ido-exit-minibuffer))
 
 (defun ido-invoke-in-horizontal-split ()
-  "Signal ido to split horizontally and switch after exiting."
+  "Signal Ido to split horizontally and switch after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'horizontal)
   (ido-exit-minibuffer))
 
 (defun ido-invoke-in-vertical-split ()
-  "Signal ido to split vertically and switch after exiting."
+  "Signal Ido to split vertically and switch after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'vertical)
   (ido-exit-minibuffer))
 
 (defun ido-invoke-in-new-frame ()
-  "Signal ido to create a new frame after exiting."
+  "Signal Ido to create a new frame after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'frame)
   (ido-exit-minibuffer))
 
 (defadvice ido-read-internal
     (around ido-read-internal-with-minibuffer-other-window activate)
-  "Advice ido on what target window to switch to."
+  "Advice `ido-read-internal' on what target window to switch to."
   (let* (ido-exit-minibuffer-target-window
 	 (this-buffer (current-buffer))
 	 (result ad-do-it))
@@ -97,7 +97,7 @@ If `split-window-preferred-function' is set, try to use that first."
 
 (defadvice ido-init-completion-maps
     (after ido-init-completion-maps-with-other-window-keys activate)
-  "Advice ido on additional key bindings to open in other windows."
+  "Advice `ido-init-completion-maps' on keys to open in other windows."
   (mapc (lambda (map)
           (define-key map (kbd "C-o") 'ido-invoke-in-other-window)
           (define-key map (kbd "C-2") 'ido-invoke-in-vertical-split)
