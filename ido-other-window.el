@@ -48,24 +48,28 @@ If `split-window-preferred-function' is set, try to use that first."
 (defvar ido-exit-minibuffer-target-window nil
   "Target window to jump to after Ido does its thing.")
 
+;;;###autoload
 (defun ido-invoke-in-other-window ()
   "Signal Ido to switch to (or create) another window after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'other)
   (ido-exit-minibuffer))
 
+;;;###autoload
 (defun ido-invoke-in-horizontal-split ()
   "Signal Ido to split horizontally and switch after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'horizontal)
   (ido-exit-minibuffer))
 
+;;;###autoload
 (defun ido-invoke-in-vertical-split ()
   "Signal Ido to split vertically and switch after exiting."
   (interactive)
   (setq ido-exit-minibuffer-target-window 'vertical)
   (ido-exit-minibuffer))
 
+;;;###autoload
 (defun ido-invoke-in-new-frame ()
   "Signal Ido to create a new frame after exiting."
   (interactive)
