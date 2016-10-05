@@ -99,9 +99,9 @@ If `split-window-preferred-function' is set, try to use that first."
     (switch-to-buffer this-buffer)
     result))
 
-(defadvice ido-init-completion-maps
-    (after ido-init-completion-maps-with-other-window-keys activate)
-  "Advice `ido-init-completion-maps' on keys to open in other windows."
+(defadvice ido-setup-completion-map
+    (after ido-setup-completion-map-with-other-window-keys activate)
+  "Advice `ido-setup-completion-map' on keys to open in other windows."
   (mapc (lambda (map)
           (define-key map (kbd "C-o") 'ido-invoke-in-other-window)
           (define-key map (kbd "C-2") 'ido-invoke-in-vertical-split)
